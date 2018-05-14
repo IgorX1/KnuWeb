@@ -42,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -83,6 +84,7 @@
     <Compile Include="DEPARTMENT.cs">
       <DependentUpon>KNUDBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DEPARTMENT.partial.cs" />
     <Compile Include="EMAIL.cs">
       <DependentUpon>KNUDBEntities.tt</DependentUpon>
     </Compile>
