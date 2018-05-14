@@ -74,7 +74,7 @@
     <Compile Include="CATHEDRA.cs">
       <DependentUpon>KNUDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CATHEDRA.partial.cs" />
     <Compile Include="DEGREE.cs">
       <DependentUpon>KNUDBEntities.tt</DependentUpon>
     </Compile>

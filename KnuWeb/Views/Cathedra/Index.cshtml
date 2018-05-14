@@ -1,18 +1,21 @@
-﻿@model IEnumerable<EmployeeEF.DEPARTMENT>
+﻿@model IEnumerable<EmployeeEF.CATHEDRA>
 
 @{
-    ViewBag.Title = "Факультети";
+    ViewBag.Title = "Кафедри";
 }
 
-<h2>Факультети</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Створити новий", "Create")
+    @Html.ActionLink("Створити нову", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-             @Html.DisplayNameFor(model => model.D_NAME)
+            @Html.DisplayNameFor(model => model.C_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DEPARTMENT.D_NAME)
         </th>
         <th></th>
     </tr>
@@ -20,7 +23,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.D_NAME)
+            @Html.DisplayFor(modelItem => item.C_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DEPARTMENT.D_NAME)
         </td>
         <td>
             @Html.ActionLink("Редагувати", "Edit", new { id=item.ID }) |
