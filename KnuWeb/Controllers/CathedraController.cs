@@ -15,5 +15,13 @@ namespace KnuWeb.Controllers
         {
             return View(ctx.CATHEDRA.ToList());
         }
+
+        public ActionResult Create()
+        {
+            CATHEDRA cATHEDRA = new CATHEDRA();
+            SelectList items = new SelectList(ctx.DEPARTMENT, "ID", "D_NAME");
+            ViewBag.Departments = items;
+            return View(cATHEDRA);
+        }
     }
 }

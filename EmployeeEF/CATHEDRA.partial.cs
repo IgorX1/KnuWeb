@@ -17,9 +17,14 @@ namespace EmployeeEF
             public int ID { get; set; }
 
             [Display(Name = "Кафедра")]
+            [UIHint("String")]
+            [Remote("CheckC_NAME", "Cathedra", ErrorMessage = "Така кафедра вже існує!")]
+            [Required(ErrorMessage = "Поле не повинно бути порожнім")]
             public string C_NAME { get; set; }
 
             [Display(Name = "Факультет")]
+            [UIHint("String")]
+            [Required(ErrorMessage = "Поле не повинно бути порожнім")]
             public int DEPARTMENT_ID { get; set; }
 
         }
