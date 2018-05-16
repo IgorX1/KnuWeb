@@ -17,6 +17,9 @@ namespace EmployeeEF
             public int ID { get; set; }
 
             [Display(Name = "Факультет")]
+            [UIHint("String")]
+            [Remote("CheckD_NAME", "Department", ErrorMessage = "Такий факультет вже існує!")]
+            [Required(ErrorMessage = "Поле не повинно бути порожнім")]
             public string D_NAME { get; set; }
         }
     }
