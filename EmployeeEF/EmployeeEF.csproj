@@ -91,6 +91,7 @@
     <Compile Include="EMPLOYEE.cs">
       <DependentUpon>KNUDBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="EMPLOYEE.partial.cs" />
     <Compile Include="KNUDBEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
