@@ -1,0 +1,39 @@
+﻿@model EmployeeEF.DEPARTMENT
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Видалення</h2>
+
+<h3>Ви впевнені, що хочете видалити цей факультет?</h3>
+<div>
+    <h4>ФАКУЛЬТЕТ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.D_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.D_NAME)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Видалити" class="btn btn-default" /> |
+        @Html.ActionLink("Поверутися до списку факультетів", "Index")
+        @{
+            if(ViewBag.DeleteUnsuccessfull!=null)
+            {
+                <p class="text-danger">@ViewBag.DeleteUnsuccessfull</p>
+            }
+        }
+        
+    </div>
+    }
+</div>

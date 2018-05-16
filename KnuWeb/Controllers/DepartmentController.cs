@@ -30,15 +30,6 @@ namespace KnuWeb.Controllers
             {
                 if(ModelState.IsValid)
                 {
-                    int num = (from i in ctx.DEPARTMENT
-                               where i.D_NAME == d.D_NAME
-                               select i).Count();
-                    /*if(num>0)
-                    {
-                        Response.Write("<script>alert('Цей факультет вже існує')</script>");
-                        return View(d);
-                    }*/
-
                     ctx.DEPARTMENT.Add(d);
                     ctx.SaveChanges();
                     return RedirectToAction("Index");
@@ -59,6 +50,43 @@ namespace KnuWeb.Controllers
                 return Json(false, JsonRequestBehavior.AllowGet);
             }
             else return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var dep = (from i in ctx.DEPARTMENT
+                       where i.ID == id
+                       select i).First();
+            return View(dep);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DepartmentDelete(int id)
+        {
+            var dep = (from i in ctx.DEPARTMENT
+                       where i.ID == id
+                       select i).First();
+
+            int noe = (from i in ctx.EMPLOYEE
+                       where i.DEPARTMENT1.ID == id
+                       select i).Count();
+            if (noe > 0)
+            {
+                var view = View(dep);
+                view.ViewBag.DeleteUnsuccessfull = "До факультета прив'язані співробітники. Видалити неможливо!";
+                return view;
+            }
+       
+            try
+            {
+                ctx.DEPARTMENT.Remove(dep);
+                ctx.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(dep);
+            }
         }
     }
 }
