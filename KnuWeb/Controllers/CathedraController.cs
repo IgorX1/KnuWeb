@@ -23,5 +23,15 @@ namespace KnuWeb.Controllers
             ViewBag.Departments = items;
             return View(cATHEDRA);
         }
+
+        public JsonResult CheckC_NAME(string C_NAME, int DEPARTMENT_ID)
+        {
+            int num = ctx.CATHEDRA.Count(x => x.C_NAME == C_NAME && x.DEPARTMENT_ID == DEPARTMENT_ID);
+            if (num > 0)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            else return Json(true, JsonRequestBehavior.AllowGet);
+        }
     }
 }
