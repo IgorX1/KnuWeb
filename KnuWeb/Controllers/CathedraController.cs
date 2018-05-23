@@ -24,6 +24,63 @@ namespace KnuWeb.Controllers
             return View(cATHEDRA);
         }
 
+        [HttpPost, ActionName("Create")]
+        public ActionResult DepartmentCreate(CATHEDRA c)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    ctx.CATHEDRA.Add(c);
+                    ctx.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+
+            }
+            return View(c);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var c = (from i in ctx.CATHEDRA
+                       where i.ID == id
+                       select i).First();
+            return View(c);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult CathedraDelete(int id)
+        {
+            var cath = (from i in ctx.CATHEDRA
+                        where i.ID == id
+                        select i).First();
+
+            if(ctx.EMPLOYEE.Where(x=>x.CATHEDRA == id).Select(x => x).Count()>0)
+            {
+                var view = View(cath);
+                view.ViewBag.DeleteUnsuccessfull = "До кафедри прив'язані співробітники. Видалити неможливо!";
+                return view;
+            }
+
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                    ctx.CATHEDRA.Remove(cath);
+                    ctx.SaveChanges();                   
+                }
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(cath);
+            }
+            
+        }
+
         public JsonResult CheckC_NAME(string C_NAME, int DEPARTMENT_ID)
         {
             int num = ctx.CATHEDRA.Count(x => x.C_NAME == C_NAME && x.DEPARTMENT_ID == DEPARTMENT_ID);

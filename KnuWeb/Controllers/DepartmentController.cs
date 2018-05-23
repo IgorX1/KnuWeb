@@ -63,7 +63,7 @@ namespace KnuWeb.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DepartmentDelete(int id)
         {
-            var dep = (from i in ctx.DEPARTMENT
+            var dep = (from i in ctx.DEPARTMENT 
                        where i.ID == id
                        select i).First();
 
@@ -79,7 +79,7 @@ namespace KnuWeb.Controllers
        
             try
             {
-                ctx.DEPARTMENT.Remove(dep);
+                ctx.DEPARTMENT.Remove(dep);// add if modelstate isValid
                 ctx.SaveChanges();
                 return RedirectToAction("Index");
             }
