@@ -17,18 +17,30 @@ namespace EmployeeEF
             public int ID { get; set; }
 
             [Display(Name = "Ім'я")]
+            [UIHint("String")]
+            [Required(ErrorMessage = "Поле не повинно бути порожнім")]
+            [StringLength(50, MinimumLength = 2, ErrorMessage = "Довжина поля має знаходитись в межах від 2 до 50 символів")]
             public string NAME_E { get; set; }
-
+           
             [Display(Name = "Пошта")]
+            [DataType(DataType.EmailAddress)]
+            [UIHint("String")]
+            [StringLength(50, MinimumLength = 2, ErrorMessage = "Довжина поля має знаходитись в межах від 2 до 50 символів")]
             public int? EMAIL { get; set; }
 
             [Display(Name = "Факультет")]
+            [UIHint("String")]
+            [Required(ErrorMessage = "Поле не повинно бути порожнім")]
             public int? DEPARTMENT { get; set; }
 
             [Display(Name = "Кафедра")]
+            [UIHint("String")]
+            [Required(ErrorMessage = "Поле не повинно бути порожнім")]
             public int? CATHEDRA { get; set; }
 
             [Display(Name = "Бал")]
+            [UIHint("String")]
+            [Required(ErrorMessage = "Поле не повинно бути порожнім")]
             public byte? RATING { get; set; }
 
             [HiddenInput(DisplayValue = false)]
