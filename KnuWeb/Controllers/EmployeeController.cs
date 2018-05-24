@@ -58,6 +58,38 @@ namespace KnuWeb.Controllers
             return View(e);
         }
 
+        public ActionResult Delete(int id)
+        {
+            var c = (from i in ctx.EMPLOYEE
+                     where i.ID == id
+                     select i).First();
+            return View(c);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult EmployeeDelete(int id)
+        {
+            EMPLOYEE eMPLOYEE = (from i in ctx.EMPLOYEE
+                                 where i.ID == id
+                                 select i).First();
+            //ctx.PHOTO.Remove(eMPLOYEE.PHOTO1);
+            ctx.DEGREE.Remove(eMPLOYEE.DEGREE1);
+            ctx.EMAIL.Remove(eMPLOYEE.EMAIL1);
+            ctx.EMPLOYEE.Remove(eMPLOYEE);
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    ctx.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
         public JsonResult CheckDepartAndCath(int? CATHEDRA, int? DEPARTMENT)
         {
             if(ctx.CATHEDRA.Where(x=>x.ID == CATHEDRA && x.DEPARTMENT_ID==DEPARTMENT).Count()<=0)

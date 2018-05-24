@@ -1,0 +1,82 @@
+﻿@model EmployeeEF.EMPLOYEE
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Видалення</h2>
+
+<h3>Ви впевнені, що хочете видалити працівника?</h3>
+<div>
+    <h4>СПІВРОБІТНИК</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NAME_E)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAME_E)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CATHEDRA1.C_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CATHEDRA1.C_NAME)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DEPARTMENT1.D_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DEPARTMENT1.D_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL1.ADRESS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL1.ADRESS)
+        </dd>
+
+        <dt>
+            Звання
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DEGREE1.DEGREELIST.D_NAME)
+        </dd>
+
+        <dt>
+            Рік
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DEGREE1.YEAR_GOT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RATING)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RATING)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Видалити" class="btn btn-default" /> |
+            @Html.ActionLink("Повернетися до списку", "Index")
+        </div>
+    }
+</div>
