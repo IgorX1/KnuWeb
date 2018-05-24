@@ -23,10 +23,9 @@ namespace EmployeeEF
             public string NAME_E { get; set; }
 
             [Display(Name = "Пошта")]
-            [EmailAddress(ErrorMessage = "Неправильна адреса")]
-            [UIHint("String")]
-            [Required(ErrorMessage = "Поле не повинно бути порожнім")]
-            [StringLength(50, MinimumLength = 2, ErrorMessage = "Довжина поля має знаходитись в межах від 2 до 50 символів")]
+            //[EmailAddress(ErrorMessage = "Неправильна адреса")]
+            //[UIHint("String")]
+            //[StringLength(50, MinimumLength = 2, ErrorMessage = "Довжина поля має знаходитись в межах від 2 до 50 символів")]
             public int? EMAIL { get; set; }
 
             [Display(Name = "Факультет")]
