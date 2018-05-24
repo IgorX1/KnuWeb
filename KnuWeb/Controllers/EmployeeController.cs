@@ -90,6 +90,21 @@ namespace KnuWeb.Controllers
             }
         }
 
+        public ActionResult Edit(int id)
+        {
+            var c = (from i in ctx.EMPLOYEE
+                     where i.ID == id
+                     select i).First();
+
+            SelectList items = new SelectList(ctx.DEPARTMENT, "ID", "D_NAME");
+            ViewBag.Departments = items;
+            SelectList items2 = new SelectList(ctx.CATHEDRA, "ID", "C_NAME");
+            ViewBag.Cathedras = items2;
+            SelectList items3 = new SelectList(ctx.DEGREELIST, "ID", "D_NAME");
+            ViewBag.Degrees = items3;
+
+            return View(c);
+        }
         public JsonResult CheckDepartAndCath(int? CATHEDRA, int? DEPARTMENT)
         {
             if(ctx.CATHEDRA.Where(x=>x.ID == CATHEDRA && x.DEPARTMENT_ID==DEPARTMENT).Count()<=0)

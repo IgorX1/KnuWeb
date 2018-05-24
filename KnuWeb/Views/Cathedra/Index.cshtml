@@ -3,13 +3,13 @@
 @{
     ViewBag.Title = "Кафедри";
 }
-
+@Styles.Render("~/Content/Styles/TableStyleSheet.css")
 <h2>Кафедри</h2>
 
 <p>
     @Html.ActionLink("Створити нову", "Create")
 </p>
-<table class="table">
+<table class="table myTable">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.C_NAME)
@@ -20,20 +20,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.C_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DEPARTMENT.D_NAME)
-        </td>
-        <td>
-            @Html.ActionLink("Редагувати", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Деталі", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Видалити", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.C_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DEPARTMENT.D_NAME)
+            </td>
+            <td>
+                @Html.ActionLink("Редагувати", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Деталі", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Видалити", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>

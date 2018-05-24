@@ -4,12 +4,14 @@
     ViewBag.Title = "Співробітники";
 }
 
+@Styles.Render("~/Content/Styles/TableStyleSheet.css")
+
 <h2>Співробітники</h2>
 
 <p>
     @Html.ActionLink("Додати нового", "Create")
 </p>
-<table class="table">
+<table class="table myTable">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.NAME_E)
