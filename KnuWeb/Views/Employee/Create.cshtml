@@ -28,7 +28,7 @@
         @Html.LabelFor(model => model.EMAIL, "Пошта", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.EMAIL1.ADRESS, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.EMAIL1.ADRESS, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -49,12 +49,21 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.DEGREE, "Звання", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.DEGREE1.NAME_D, "Звання", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("DEGREE", ViewBag.Degrees as SelectList, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.DEGREE, "", new { @class = "text-danger" })
+            @Html.DropDownList("DEGREE", ViewBag.Degrees as SelectList, htmlAttributes: new { @class = "form-control" })           
+            @Html.ValidationMessageFor(model => model.DEGREE1.NAME_D, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DEGREE1.YEAR_GOT, "Рік отримання", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DEGREE1.YEAR_GOT, "", new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DEGREE1.YEAR_GOT, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
 
     <div class="form-group">
         @Html.LabelFor(model => model.RATING, htmlAttributes: new { @class = "control-label col-md-2" })

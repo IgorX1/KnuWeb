@@ -29,5 +29,28 @@ namespace KnuWeb.Controllers
 
             return View(e);
         }
+
+        /*[HttpPost, ActionName("Create")]
+        public ActionResult EmplopyeeCreate(EMPLOYEE e)
+        {
+
+        }*/
+
+        public JsonResult CheckDepartAndCath(int? CATHEDRA, int? DEPARTMENT)
+        {
+            if(ctx.CATHEDRA.Where(x=>x.ID == CATHEDRA && x.DEPARTMENT_ID==DEPARTMENT).Count()<=0)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            else return Json(true, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult CheckYear(int? YEAR_GOT)
+        {
+            if (YEAR_GOT<1900 || YEAR_GOT>DateTime.Now.Year+1)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            else return Json(true, JsonRequestBehavior.AllowGet);
+        }
     }
 }

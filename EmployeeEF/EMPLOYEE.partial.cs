@@ -25,16 +25,19 @@ namespace EmployeeEF
             [Display(Name = "Пошта")]
             [DataType(DataType.EmailAddress)]
             [UIHint("String")]
-            [StringLength(50, MinimumLength = 2, ErrorMessage = "Довжина поля має знаходитись в межах від 2 до 50 символів")]
+            [Required(ErrorMessage = "Поле не повинно бути порожнім")]
+            //[StringLength(50, MinimumLength = 2, ErrorMessage = "Довжина поля має знаходитись в межах від 2 до 50 символів")]
             public int? EMAIL { get; set; }
 
             [Display(Name = "Факультет")]
             [UIHint("String")]
+            //[Remote("CheckDepartAndCath", "Employee", ErrorMessage = "Така кафедра вже існує!", AdditionalFields = "CATHEDRA")]
             [Required(ErrorMessage = "Поле не повинно бути порожнім")]
             public int? DEPARTMENT { get; set; }
 
             [Display(Name = "Кафедра")]
             [UIHint("String")]
+            [Remote("CheckDepartAndCath", "Employee", ErrorMessage = "Така кафедри нема на факультеті", AdditionalFields = "DEPARTMENT")]
             [Required(ErrorMessage = "Поле не повинно бути порожнім")]
             public int? CATHEDRA { get; set; }
 

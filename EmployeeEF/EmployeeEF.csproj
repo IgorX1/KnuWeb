@@ -78,6 +78,7 @@
     <Compile Include="DEGREE.cs">
       <DependentUpon>KNUDBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DEGREE.partial.cs" />
     <Compile Include="DEGREELIST.cs">
       <DependentUpon>KNUDBEntities.tt</DependentUpon>
     </Compile>
@@ -88,6 +89,7 @@
     <Compile Include="EMAIL.cs">
       <DependentUpon>KNUDBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="EMAIL.partial.cs" />
     <Compile Include="EMPLOYEE.cs">
       <DependentUpon>KNUDBEntities.tt</DependentUpon>
     </Compile>
