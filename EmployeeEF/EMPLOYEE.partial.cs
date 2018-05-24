@@ -21,12 +21,12 @@ namespace EmployeeEF
             [Required(ErrorMessage = "Поле не повинно бути порожнім")]
             [StringLength(50, MinimumLength = 2, ErrorMessage = "Довжина поля має знаходитись в межах від 2 до 50 символів")]
             public string NAME_E { get; set; }
-           
+
             [Display(Name = "Пошта")]
-            [DataType(DataType.EmailAddress)]
+            [EmailAddress(ErrorMessage = "Неправильна адреса")]
             [UIHint("String")]
             [Required(ErrorMessage = "Поле не повинно бути порожнім")]
-            //[StringLength(50, MinimumLength = 2, ErrorMessage = "Довжина поля має знаходитись в межах від 2 до 50 символів")]
+            [StringLength(50, MinimumLength = 2, ErrorMessage = "Довжина поля має знаходитись в межах від 2 до 50 символів")]
             public int? EMAIL { get; set; }
 
             [Display(Name = "Факультет")]
@@ -37,13 +37,14 @@ namespace EmployeeEF
 
             [Display(Name = "Кафедра")]
             [UIHint("String")]
-            [Remote("CheckDepartAndCath", "Employee", ErrorMessage = "Така кафедри нема на факультеті", AdditionalFields = "DEPARTMENT")]
+            [Remote("CheckDepartAndCath", "Employee", ErrorMessage = "Такої кафедри нема на факультеті", AdditionalFields = "DEPARTMENT")]
             [Required(ErrorMessage = "Поле не повинно бути порожнім")]
             public int? CATHEDRA { get; set; }
 
             [Display(Name = "Бал")]
             [UIHint("String")]
             [Required(ErrorMessage = "Поле не повинно бути порожнім")]
+            [Range(0,100, ErrorMessage ="Введіть бал від 0 до 100")]
             public byte? RATING { get; set; }
 
             [HiddenInput(DisplayValue = false)]

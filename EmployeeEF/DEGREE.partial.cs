@@ -16,6 +16,8 @@ namespace EmployeeEF
             [HiddenInput(DisplayValue = false)]
             public int ID { get; set; }
 
+            
+            [Range(1900, 2018, ErrorMessage ="Задайте рік числового типу в адекватному діапазоні")]
             [Remote("CheckYear", "Employee", ErrorMessage = "Задайте рік числового типу в адекватному діапазоні")]
             public int? YEAR_GOT { get; set; }
         }

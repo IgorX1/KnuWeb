@@ -30,11 +30,33 @@ namespace KnuWeb.Controllers
             return View(e);
         }
 
-        /*[HttpPost, ActionName("Create")]
+        [HttpPost, ActionName("Create")]
         public ActionResult EmplopyeeCreate(EMPLOYEE e)
         {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    ctx.EMPLOYEE.Add(e);
+                    ctx.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    SelectList items = new SelectList(ctx.DEPARTMENT, "ID", "D_NAME");
+                    ViewBag.Departments = items;
+                    SelectList items2 = new SelectList(ctx.CATHEDRA, "ID", "C_NAME");
+                    ViewBag.Cathedras = items2;
+                    SelectList items3 = new SelectList(ctx.DEGREELIST, "ID", "D_NAME");
+                    ViewBag.Degrees = items3;
+                }
+            }
+            catch
+            {
 
-        }*/
+            }
+            return View(e);
+        }
 
         public JsonResult CheckDepartAndCath(int? CATHEDRA, int? DEPARTMENT)
         {
