@@ -90,5 +90,44 @@ namespace KnuWeb.Controllers
             }
             else return Json(true, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Edit(int id)
+        {
+            var c = (from i in ctx.CATHEDRA
+                     where i.ID == id
+                     select i).First();
+
+            SelectList items = new SelectList(ctx.DEPARTMENT, "ID", "D_NAME");
+            ViewBag.Departments = items;
+
+            return View(c);
+        }
+
+        [HttpPost, ActionName("Edit")]
+        public ActionResult CathedraEdit(int id, FormCollection collection)
+        {
+            var e = (from i in ctx.CATHEDRA
+                     where i.ID == id
+                     select i).First();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    UpdateModel(e);
+                    ctx.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    SelectList items = new SelectList(ctx.DEPARTMENT, "ID", "D_NAME");
+                    ViewBag.Departments = items;                   
+                }
+            }
+            catch
+            {
+
+            }
+            return View(e);
+        }
     }
 }
