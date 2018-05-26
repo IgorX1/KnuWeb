@@ -10,13 +10,12 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>СПІВРОБІТНИК</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.ID)
-
 
     <div class="form-group">
         @Html.LabelFor(model => model.NAME_E, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -74,6 +73,13 @@
         </div>
     </div>
 
+    <div class="form-group">
+        @Html.LabelFor(model => model.PHOTO1.IMAGEDATA, "Фото", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input name="file" type="file" id="file" value="Виберіть фото" accept=".jpg">
+            @Html.ValidationMessageFor(model => model.PHOTO1.IMAGEDATA, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
 
     <div class="form-group">
