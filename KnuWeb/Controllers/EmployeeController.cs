@@ -136,6 +136,14 @@ namespace KnuWeb.Controllers
             }
             return View(e);
         }
+
+        public ActionResult Details(int id)
+        {
+            var c = (from i in ctx.EMPLOYEE
+                     where i.ID == id
+                     select i).First();
+            return View(c);
+        }
         public JsonResult CheckDepartAndCath(int? CATHEDRA, int? DEPARTMENT)
         {
             if(ctx.CATHEDRA.Where(x=>x.ID == CATHEDRA && x.DEPARTMENT_ID==DEPARTMENT).Count()<=0)

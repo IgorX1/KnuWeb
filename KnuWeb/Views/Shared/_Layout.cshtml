@@ -21,14 +21,18 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     <li>@Html.ActionLink("Співробітники", "Index", "Employee")</li>
                     <li>@Html.ActionLink("Факультети", "Index", "Department")</li>
                     <li>@Html.ActionLink("Кафедри", "Index", "Cathedra")</li>
-                    <li>@Html.ActionLink("Статистика", "Stats", "Home")</li>
                     <li>@Html.ActionLink("Інфо", "About", "Home")</li>
+                    @*<li>
+            <div class="search-container">
+                <form action="/action_page.php">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit" onclick="location.href='@Url.Action("Search", "Home")'"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </li>*@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

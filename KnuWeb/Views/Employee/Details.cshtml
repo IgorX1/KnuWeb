@@ -1,0 +1,99 @@
+﻿@model EmployeeEF.EMPLOYEE
+@using System.Drawing
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.NAME_E)</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.DEGREE1.DEGREELIST.D_NAME) кафедри  @Html.DisplayFor(model => model.CATHEDRA1.C_NAME)</h4>
+    <hr />
+    <table class="myTable" >
+        <tr>
+            <td>
+                 @{
+                     string base64, imgSrc = String.Empty;
+                     try
+                     {
+                         base64 = Convert.ToBase64String(Model.PHOTO1.IMAGEDATA);
+                         imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                     }
+                     catch (NullReferenceException)
+                     {
+                         using (Image image = Image.FromFile(Server.MapPath("~/Content/Images/unknown.jpg")))
+                         {
+                             using (MemoryStream m = new MemoryStream())
+                             {
+                                 image.Save(m, image.RawFormat);
+                                 byte[] imageBytes = m.ToArray();
+
+                                 // Convert byte[] to Base64 String
+                                 base64 = Convert.ToBase64String(imageBytes);
+                                 imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+                             }
+                         }
+                     }
+
+                     }
+                <img src="@imgSrc" height="300"/>
+            </td>
+            <td>
+                <dl class="dl-horizontal" style="font-size:20px">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DEPARTMENT1.D_NAME)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DEPARTMENT1.D_NAME)
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CATHEDRA1.C_NAME)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CATHEDRA1.C_NAME)
+                    </dd>
+
+                    <dt>
+                        Звання
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DEGREE1.DEGREELIST.D_NAME)
+                    </dd>
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EMAIL1.ADRESS)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.EMAIL1.ADRESS)
+                    </dd>
+
+                    
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RATING)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.RATING)
+                    </dd>
+
+
+
+                </dl>
+            </td>
+        </tr>
+    </table>
+</div>
+<p>
+    <br>
+    @Html.ActionLink("Редагувати", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Назад до списку", "Index")
+</p>
