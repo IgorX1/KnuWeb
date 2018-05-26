@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -33,7 +34,34 @@ namespace KnuWeb.Controllers
         [HttpPost, ActionName("Create")]
         public ActionResult EmplopyeeCreate(EMPLOYEE e)
         {
+            /*if(Request.Files["file"].ContentLength>0)
+            {
+                var stream = Request.Files["files"].InputStream;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    stream.CopyTo(ms);
+                    e.PHOTO1.IMAGEDATA = ms.ToArray();
+                }
+            }*/
 
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+                if(file!=null && file.ContentLength > 0)
+                {
+                    var stream = file.InputStream;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        stream.CopyTo(ms);
+                        PHOTO pHOTO = new PHOTO
+                        {
+                            IMAGEDATA = ms.ToArray()
+
+                        };
+                        e.PHOTO1 = pHOTO;
+                    }
+                }
+            }
 
             try
             {
