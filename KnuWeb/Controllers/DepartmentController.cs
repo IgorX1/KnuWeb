@@ -88,5 +88,36 @@ namespace KnuWeb.Controllers
                 return View(dep);
             }
         }
+
+        public ActionResult Edit(int id)
+        {
+            var c = (from i in ctx.DEPARTMENT
+                     where i.ID == id
+                     select i).First();
+
+            return View(c);
+        }
+
+        [HttpPost, ActionName("Edit")]
+        public ActionResult EmplopyeeEdit(int id, FormCollection collection)
+        {
+            var e = (from i in ctx.DEPARTMENT
+                     where i.ID == id
+                     select i).First();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    UpdateModel(e);
+                    ctx.SaveChanges();
+                    return RedirectToAction("Index");
+                }                
+            }
+            catch
+            {
+
+            }
+            return View(e);
+        }
     }
 }

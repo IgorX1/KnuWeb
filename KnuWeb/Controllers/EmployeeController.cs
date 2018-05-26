@@ -130,7 +130,7 @@ namespace KnuWeb.Controllers
                     ViewBag.Degrees = items3;
                 }
             }
-            catch(Exception ex)
+            catch
             {
 
             }
