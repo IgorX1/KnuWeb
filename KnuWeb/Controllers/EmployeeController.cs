@@ -33,6 +33,8 @@ namespace KnuWeb.Controllers
         [HttpPost, ActionName("Create")]
         public ActionResult EmplopyeeCreate(EMPLOYEE e)
         {
+
+
             try
             {
                 if (ModelState.IsValid)
