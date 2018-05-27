@@ -34,16 +34,7 @@ namespace KnuWeb.Controllers
         [HttpPost, ActionName("Create")]
         public ActionResult EmplopyeeCreate(EMPLOYEE e)
         {
-            /*if(Request.Files["file"].ContentLength>0)
-            {
-                var stream = Request.Files["files"].InputStream;
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    stream.CopyTo(ms);
-                    e.PHOTO1.IMAGEDATA = ms.ToArray();
-                }
-            }*/
-
+            
             if (Request.Files.Count > 0)
             {
                 var file = Request.Files[0];
@@ -62,7 +53,7 @@ namespace KnuWeb.Controllers
                     }
                 }
             }
-
+            
             try
             {
                 if (ModelState.IsValid)
@@ -142,6 +133,26 @@ namespace KnuWeb.Controllers
             var e = (from i in ctx.EMPLOYEE
                      where i.ID == id
                      select i).First();
+
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+                if (file != null && file.ContentLength > 0)
+                {
+                    var stream = file.InputStream;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        stream.CopyTo(ms);
+                        PHOTO pHOTO = new PHOTO
+                        {
+                            IMAGEDATA = ms.ToArray()
+
+                        };
+                        e.PHOTO1 = pHOTO;
+                    }
+                }
+            }
+
             try
             {
                 if (ModelState.IsValid)
