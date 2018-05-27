@@ -79,6 +79,15 @@ namespace KnuWeb.Controllers
             return View(e);
         }
 
+        public ActionResult Search(string search)
+        {
+            var emp = ctx.EMPLOYEE.Where(x => x.NAME_E.StartsWith(search) || x.EMAIL1.ADRESS.StartsWith(search) || x.DEPARTMENT1.D_NAME.StartsWith(search) || x.CATHEDRA1.C_NAME.StartsWith(search) || x.DEGREE1.DEGREELIST.D_NAME.StartsWith(search)).ToList();
+            if (emp.Count == 0)
+                return View("NoResult");
+            else if (emp.Count > 1)
+                return View(emp);
+            else return View("Details", emp.First());
+        }
         public ActionResult Delete(int id)
         {
             var c = (from i in ctx.EMPLOYEE

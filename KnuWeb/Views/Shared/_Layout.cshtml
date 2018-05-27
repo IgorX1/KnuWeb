@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - KNUdb</title>
     @Styles.Render("~/Content/css")
+    <link type="text/css" rel="stylesheet" href="~/Content/Styles/TableStyleSheet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -25,14 +26,18 @@
                     <li>@Html.ActionLink("Факультети", "Index", "Department")</li>
                     <li>@Html.ActionLink("Кафедри", "Index", "Cathedra")</li>
                     <li>@Html.ActionLink("Інфо", "About", "Home")</li>
-                    @*<li>
-            <div class="search-container">
-                <form action="/action_page.php">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit" onclick="location.href='@Url.Action("Search", "Home")'"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-        </li>*@
+                    <li>
+                        @using (Html.BeginForm("Search", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="topnav">
+                                <div class="search-container mySearch">
+                                    <input type="text" placeholder="Search.." name="search" id="search">
+                                    <button type="submit" onclick="location.href='@Url.Action("Search", "Employee")'"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        }
+
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
