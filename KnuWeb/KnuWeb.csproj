@@ -273,6 +273,7 @@
     <Content Include="Views\Employee\Details.cshtml" />
     <Content Include="Views\Employee\Search.cshtml" />
     <Content Include="Views\Employee\NoResult.cshtml" />
+    <Content Include="Views\Home\Authorisation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

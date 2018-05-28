@@ -119,6 +119,7 @@
     <Compile Include="USERS.cs">
       <DependentUpon>KNUDBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="USERS.partial.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

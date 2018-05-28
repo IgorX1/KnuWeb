@@ -26,7 +26,7 @@
                     <li>@Html.ActionLink("Факультети", "Index", "Department")</li>
                     <li>@Html.ActionLink("Кафедри", "Index", "Cathedra")</li>
                     <li>@Html.ActionLink("Інфо", "About", "Home")</li>
-                    <li style="margin-left:240px;">
+                    <li style="margin-left:400px;">
                         @using (Html.BeginForm("Search", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             <div class="topnav">
@@ -39,7 +39,7 @@
 
                     </li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+               @* @Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </div>

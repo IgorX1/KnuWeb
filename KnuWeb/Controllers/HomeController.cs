@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EmployeeEF;
 
 namespace KnuWeb.Controllers
 {
@@ -20,6 +21,17 @@ namespace KnuWeb.Controllers
             return View();
         }
 
+        public ActionResult Authorisation()
+        {
+            USERS uSERS = new USERS();
+            return View(uSERS);
+        }
+
+        [HttpPost, ActionName("Authorisation")]
+        public void EnterSystem(USERS u)
+        {
+            RedirectToAction("Index", "Home");
+        }
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
